@@ -4,7 +4,13 @@ function ToDoApp() {
 
 ToDoApp.prototype.addTask = function(task) {
     if (task != null && typeof task === 'object') {
-        this.tasks.push(task.toString());
+        if(Array.isArray(task)){
+            for(const particularTask of task){
+                this.tasks.push(particularTask);
+            }
+        }else{
+            this.tasks.push(task.text);
+        }
     } else {
         this.tasks.push(task);
     }
